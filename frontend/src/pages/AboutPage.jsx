@@ -113,7 +113,7 @@ const AboutPage = () => {
               Building the Future of AI
             </h1>
             <p className="text-lg md:text-xl text-white/70 leading-relaxed">
-              Founded in {companyInfo.founded}, Amruth AI has been at the forefront of artificial intelligence innovation, helping businesses across industries harness the power of AI to solve complex challenges.
+              Founded in {companyInfo.founded}, AmruthAI has been at the forefront of artificial intelligence innovation, helping businesses across industries harness the power of AI to solve complex challenges.
             </p>
           </div>
         </div>

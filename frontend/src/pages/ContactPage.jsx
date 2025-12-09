@@ -282,7 +282,7 @@ const ContactPage = () => {
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Amruth AI Location - OMR Chennai"
+              title="AmruthAI Location - OMR Chennai"
               className="w-full"
             ></iframe>
             <a

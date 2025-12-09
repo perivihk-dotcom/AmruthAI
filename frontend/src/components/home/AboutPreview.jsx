@@ -39,7 +39,7 @@ const AboutPreview = () => {
               Pioneering the Future of AI Innovation
             </h2>
             <p className="text-lg text-white/70 leading-relaxed mb-8">
-              At Amruth AI, we believe in the transformative power of artificial intelligence. 
+              At AmruthAI, we believe in the transformative power of artificial intelligence. 
               Our team of world-class researchers and engineers work tirelessly to develop 
               solutions that help businesses thrive in the digital age.
             </p>

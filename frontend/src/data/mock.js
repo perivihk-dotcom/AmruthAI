@@ -1,7 +1,7 @@
-// Mock data for Amruth AI website
+// Mock data for AmruthAI website
 
 export const companyInfo = {
-  name: "Amruth AI",
+  name: "AmruthAI",
   tagline: "Transforming Businesses with Intelligent AI Solutions",
   description: "We are a leading IT startup specializing in cutting-edge AI solutions that drive business growth and innovation.",
   logo: "https://customer-assets.emergentagent.com/job_ef1f86f3-b3cc-4db9-b173-46d768337880/artifacts/elsah9on_ChatGPT%20Image%20Dec%209%2C%202025%2C%2001_17_24%20PM.png",
@@ -95,7 +95,7 @@ export const teamMembers = [
 export const testimonials = [
   {
     id: 1,
-    quote: "Amruth AI transformed our customer service with their intelligent chatbot solution. Response times dropped by 70% and customer satisfaction soared.",
+    quote: "AmruthAI transformed our customer service with their intelligent chatbot solution. Response times dropped by 70% and customer satisfaction soared.",
     author: "James Wilson",
     company: "TechCorp Industries",
     role: "CEO"
@@ -109,7 +109,7 @@ export const testimonials = [
   },
   {
     id: 3,
-    quote: "The team at Amruth AI is exceptional. They understood our needs perfectly and delivered a solution that exceeded our expectations.",
+    quote: "The team at AmruthAI is exceptional. They understood our needs perfectly and delivered a solution that exceeded our expectations.",
     author: "David Park",
     company: "HealthPlus",
     role: "CTO"
