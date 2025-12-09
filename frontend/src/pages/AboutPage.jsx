@@ -1,10 +1,77 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Target, Eye, Heart, Linkedin, Twitter } from 'lucide-react';
 import Layout from '../components/layout/Layout';
-import { teamMembers, stats, images, companyInfo } from '../data/mock';
+import { teamMembers, stats, companyInfo } from '../data/mock';
+
+// Counter animation hook
+const useCountUp = (end, duration = 2000, startCounting = false) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!startCounting) {
+      setCount(0);
+      return;
+    }
+
+    let startTime = null;
+    const animate = (currentTime) => {
+      if (!startTime) startTime = currentTime;
+      const progress = Math.min((currentTime - startTime) / duration, 1);
+
+      // Easing function for smooth animation
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      setCount(Math.floor(easeOutQuart * end));
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      }
+    };
+
+    requestAnimationFrame(animate);
+  }, [end, duration, startCounting]);
+
+  return count;
+};
+
+// Animated stat component
+const AnimatedStat = ({ value, label, isVisible }) => {
+  const numericValue = parseInt(value.replace(/[^0-9]/g, ''));
+  const suffix = value.replace(/[0-9]/g, '');
+
+  const count = useCountUp(numericValue, 2000, isVisible);
+
+  return (
+    <div className="text-center">
+      <div className="text-4xl md:text-5xl font-semibold text-[#FFE500] mb-2">
+        {count}{suffix}
+      </div>
+      <div className="text-white/60">{label}</div>
+    </div>
+  );
+};
 
 const AboutPage = () => {
+  const [statsVisible, setStatsVisible] = useState(false);
+  const statsRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStatsVisible(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (statsRef.current) {
+      observer.observe(statsRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   const values = [
     {
       icon: Target,
@@ -38,28 +105,16 @@ const AboutPage = () => {
           }}
         />
         <div className="max-w-[1400px] mx-auto px-4 md:px-[7.6923%] relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div>
-              <span className="inline-block text-[#FFE500] text-sm font-medium tracking-wider uppercase mb-4">
-                About Us
-              </span>
-              <h1 className="text-4xl md:text-5xl lg:text-[66px] font-semibold text-white leading-[1.1] tracking-[-0.62px] mb-6">
-                Building the Future of AI
-              </h1>
-              <p className="text-lg md:text-xl text-white/70 leading-relaxed">
-                Founded in {companyInfo.founded}, Amruth AI has been at the forefront of artificial intelligence innovation, helping businesses across industries harness the power of AI to solve complex challenges.
-              </p>
-            </div>
-            <div className="relative">
-              <div className="aspect-[4/3] overflow-hidden">
-                <img
-                  src={images.office1}
-                  alt="Our Team"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="absolute -bottom-4 -left-4 w-full h-full border-2 border-[#FFE500] -z-10" />
-            </div>
+          <div className="max-w-3xl">
+            <span className="inline-block text-[#FFE500] text-sm font-medium tracking-wider uppercase mb-4">
+              About Us
+            </span>
+            <h1 className="text-4xl md:text-5xl lg:text-[66px] font-semibold text-white leading-[1.1] tracking-[-0.62px] mb-6">
+              Building the Future of AI
+            </h1>
+            <p className="text-lg md:text-xl text-white/70 leading-relaxed">
+              Founded in {companyInfo.founded}, Amruth AI has been at the forefront of artificial intelligence innovation, helping businesses across industries harness the power of AI to solve complex challenges.
+            </p>
           </div>
         </div>
       </section>
@@ -67,14 +122,14 @@ const AboutPage = () => {
       {/* Stats Section */}
       <section className="bg-[#121212] py-16">
         <div className="max-w-[1400px] mx-auto px-4 md:px-[7.6923%]">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-4xl md:text-5xl font-semibold text-[#FFE500] mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-white/60">{stat.label}</div>
-              </div>
+              <AnimatedStat
+                key={index}
+                value={stat.value}
+                label={stat.label}
+                isVisible={statsVisible}
+              />
             ))}
           </div>
         </div>

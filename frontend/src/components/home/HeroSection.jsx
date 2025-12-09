@@ -1,11 +1,79 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { companyInfo, stats } from '../../data/mock';
 
 const Spline = React.lazy(() => import('@splinetool/react-spline'));
 
+// Counter animation hook
+const useCountUp = (end, duration = 2000, startCounting = false) => {
+  const [count, setCount] = useState(0);
+  
+  useEffect(() => {
+    if (!startCounting) {
+      setCount(0);
+      return;
+    }
+    
+    let startTime = null;
+    const animate = (currentTime) => {
+      if (!startTime) startTime = currentTime;
+      const progress = Math.min((currentTime - startTime) / duration, 1);
+      
+      // Easing function for smooth animation
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      setCount(Math.floor(easeOutQuart * end));
+      
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      }
+    };
+    
+    requestAnimationFrame(animate);
+  }, [end, duration, startCounting]);
+  
+  return count;
+};
+
+// Animated stat component
+const AnimatedStat = ({ value, label, isVisible }) => {
+  // Parse the value to extract number and suffix
+  const numericValue = parseInt(value.replace(/[^0-9]/g, ''));
+  const suffix = value.replace(/[0-9]/g, '');
+  
+  const count = useCountUp(numericValue, 2000, isVisible);
+  
+  return (
+    <div className="text-center md:text-left">
+      <div className="text-3xl md:text-4xl font-semibold text-[#FFE500] mb-1">
+        {count}{suffix}
+      </div>
+      <div className="text-sm text-white/50">{label}</div>
+    </div>
+  );
+};
+
 const HeroSection = () => {
+  const [statsVisible, setStatsVisible] = useState(false);
+  const statsRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStatsVisible(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (statsRef.current) {
+      observer.observe(statsRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className="relative min-h-screen bg-black overflow-hidden">
       {/* Background Grid Pattern */}
@@ -59,14 +127,14 @@ const HeroSection = () => {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {stats.map((stat, index) => (
-                <div key={index} className="text-center md:text-left">
-                  <div className="text-3xl md:text-4xl font-semibold text-[#FFE500] mb-1">
-                    {stat.value}
-                  </div>
-                  <div className="text-sm text-white/50">{stat.label}</div>
-                </div>
+                <AnimatedStat
+                  key={index}
+                  value={stat.value}
+                  label={stat.label}
+                  isVisible={statsVisible}
+                />
               ))}
             </div>
           </div>

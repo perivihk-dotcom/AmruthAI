@@ -6,8 +6,8 @@ export const companyInfo = {
   description: "We are a leading IT startup specializing in cutting-edge AI solutions that drive business growth and innovation.",
   logo: "https://customer-assets.emergentagent.com/job_ef1f86f3-b3cc-4db9-b173-46d768337880/artifacts/elsah9on_ChatGPT%20Image%20Dec%209%2C%202025%2C%2001_17_24%20PM.png",
   email: "contact@amruthai.com",
-  phone: "+1 (555) 123-4567",
-  address: "123 Innovation Drive, Tech Hub, Silicon Valley, CA 94043",
+  phone: "+91 9440203095",
+  address: "Chennai, Tamil Nadu, India",
   founded: 2023,
   socialLinks: {
     linkedin: "https://linkedin.com/company/amruthai",
@@ -18,46 +18,39 @@ export const companyInfo = {
 
 export const services = [
   {
-    id: 1,
-    title: "AI Consulting",
-    description: "Strategic AI implementation guidance tailored to your business needs. We help you identify opportunities and create a roadmap for AI integration.",
-    icon: "Brain",
-    features: ["AI Strategy Development", "Technology Assessment", "Implementation Roadmap", "ROI Analysis"]
+    id: "web-development",
+    title: "Web Development",
+    description: "Build modern, responsive, and high-performance websites and web applications tailored to your business needs.",
+    icon: "Globe",
+    features: ["Custom Website Development", "E-commerce Solutions", "Progressive Web Apps", "CMS Development"]
   },
   {
-    id: 2,
-    title: "Machine Learning Solutions",
-    description: "Custom ML models designed to solve your specific business challenges. From predictive analytics to recommendation systems.",
-    icon: "Cpu",
-    features: ["Custom Model Development", "Predictive Analytics", "Natural Language Processing", "Computer Vision"]
+    id: "app-development",
+    title: "App Development",
+    description: "Create powerful mobile applications for iOS and Android platforms that deliver exceptional user experiences.",
+    icon: "Smartphone",
+    features: ["iOS App Development", "Android App Development", "Cross-Platform Apps", "App Maintenance & Support"]
   },
   {
-    id: 3,
-    title: "Data Engineering",
-    description: "Build robust data pipelines and infrastructure to power your AI initiatives. We handle data collection, processing, and storage.",
-    icon: "Database",
-    features: ["Data Pipeline Design", "ETL Development", "Data Warehousing", "Real-time Processing"]
-  },
-  {
-    id: 4,
-    title: "AI Integration",
-    description: "Seamlessly integrate AI capabilities into your existing systems and workflows for enhanced productivity and efficiency.",
-    icon: "Workflow",
-    features: ["API Development", "System Integration", "Legacy Modernization", "Cloud Deployment"]
-  },
-  {
-    id: 5,
-    title: "Automation Solutions",
+    id: "ai-automations",
+    title: "AI Automations",
     description: "Intelligent automation powered by AI to streamline operations, reduce costs, and eliminate repetitive tasks.",
     icon: "Bot",
     features: ["Process Automation", "Intelligent Document Processing", "Chatbots & Virtual Assistants", "Workflow Optimization"]
   },
   {
-    id: 6,
-    title: "AI Training & Support",
-    description: "Comprehensive training programs and ongoing support to ensure your team maximizes the value of AI investments.",
-    icon: "GraduationCap",
-    features: ["Team Training", "Technical Support", "Performance Monitoring", "Continuous Improvement"]
+    id: "ai-ml",
+    title: "AI/ML Solutions",
+    description: "Custom machine learning models designed to solve your specific business challenges with cutting-edge AI technology.",
+    icon: "Cpu",
+    features: ["Custom Model Development", "Predictive Analytics", "Natural Language Processing", "Computer Vision"]
+  },
+  {
+    id: "ai-consulting",
+    title: "AI Consulting",
+    description: "Strategic AI implementation guidance tailored to your business needs. We help you identify opportunities and create a roadmap for AI integration.",
+    icon: "Brain",
+    features: ["AI Strategy Development", "Technology Assessment", "Implementation Roadmap", "ROI Analysis"]
   }
 ];
 

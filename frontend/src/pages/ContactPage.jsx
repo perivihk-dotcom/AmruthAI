@@ -261,6 +261,42 @@ const ContactPage = () => {
           </div>
         </div>
       </section>
+
+      {/* Map Section */}
+      <section className="relative bg-[#121212] py-16 lg:py-24">
+        <div className="max-w-[1400px] mx-auto px-4 md:px-[7.6923%]">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-semibold text-white mb-4">
+              Our Location
+            </h2>
+            <p className="text-white/60">
+              Visit us at OMR, Chennai
+            </p>
+          </div>
+          <div className="relative border border-white/10 overflow-hidden">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d124411.57297571498!2d80.14713595!3d12.9110562!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525d1c4f1a5c5f%3A0x5f8c5c5c5c5c5c5c!2sOMR%2C%20Chennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1234567890"
+              width="100%"
+              height="450"
+              style={{ border: 0, filter: 'grayscale(100%) invert(92%) contrast(83%)' }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Amruth AI Location - OMR Chennai"
+              className="w-full"
+            ></iframe>
+            <a
+              href="https://www.google.com/maps/search/omr+chennai/@12.9110562,79.9944053,11z"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="absolute bottom-4 right-4 inline-flex items-center gap-2 px-4 py-2 bg-[#FFE500] text-black font-medium text-sm hover:bg-[#FFE500]/90 transition-all"
+            >
+              <MapPin size={16} />
+              Open in Google Maps
+            </a>
+          </div>
+        </div>
+      </section>
     </Layout>
   );
 };

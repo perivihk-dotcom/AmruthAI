@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Linkedin, Twitter, Github, Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react';
+import { Linkedin, Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react';
 import { companyInfo } from '../../data/mock';
 
 const Footer = () => {
@@ -14,11 +14,11 @@ const Footer = () => {
   ];
 
   const serviceLinks = [
-    'AI Consulting',
-    'Machine Learning',
-    'Data Engineering',
-    'AI Integration',
-    'Automation'
+    { label: 'Web Development', id: 'web-development' },
+    { label: 'App Development', id: 'app-development' },
+    { label: 'AI Automations', id: 'ai-automations' },
+    { label: 'AI/ML Solutions', id: 'ai-ml' },
+    { label: 'AI Consulting', id: 'ai-consulting' }
   ];
 
   return (
@@ -46,25 +46,17 @@ const Footer = () => {
                 href={companyInfo.socialLinks.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 bg-white/10 text-white hover:bg-[#FFE500] hover:text-black transition-all duration-400"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-[#FFE500] hover:text-black transition-all duration-400"
               >
-                <Linkedin size={20} />
+                <Linkedin size={18} />
               </a>
               <a
-                href={companyInfo.socialLinks.twitter}
+                href={`https://wa.me/919440203095`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 bg-white/10 text-white hover:bg-[#FFE500] hover:text-black transition-all duration-400"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-[#FFE500] hover:text-black transition-all duration-400"
               >
-                <Twitter size={20} />
-              </a>
-              <a
-                href={companyInfo.socialLinks.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 bg-white/10 text-white hover:bg-[#FFE500] hover:text-black transition-all duration-400"
-              >
-                <Github size={20} />
+                <i className="fa-brands fa-whatsapp text-lg"></i>
               </a>
             </div>
           </div>
@@ -95,12 +87,12 @@ const Footer = () => {
             <h4 className="text-white text-lg font-semibold mb-6">Services</h4>
             <ul className="space-y-4">
               {serviceLinks.map((service) => (
-                <li key={service}>
+                <li key={service.id}>
                   <Link
-                    to="/services"
+                    to={`/services#${service.id}`}
                     className="text-white/60 hover:text-[#FFE500] transition-colors duration-300"
                   >
-                    {service}
+                    {service.label}
                   </Link>
                 </li>
               ))}

@@ -1,15 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Brain, Cpu, Database, Workflow, Bot, GraduationCap, ArrowRight } from 'lucide-react';
+import { Brain, Cpu, Bot, Globe, Smartphone, ArrowRight } from 'lucide-react';
 import { services } from '../../data/mock';
 
 const iconMap = {
   Brain,
   Cpu,
-  Database,
-  Workflow,
   Bot,
-  GraduationCap
+  Globe,
+  Smartphone
 };
 
 const ServicesPreview = () => {

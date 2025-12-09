@@ -70,11 +70,31 @@ module.exports = {
   				to: {
   					height: '0'
   				}
+  			},
+  			'lightPassRight': {
+  				'0%': { left: '-50%' },
+  				'100%': { left: '100%' }
+  			},
+  			'lightPassLeft': {
+  				'0%': { right: '-50%' },
+  				'100%': { right: '100%' }
+  			},
+  			'lightPassDown': {
+  				'0%': { top: '-50%' },
+  				'100%': { top: '100%' }
+  			},
+  			'lightPassUp': {
+  				'0%': { bottom: '-50%' },
+  				'100%': { bottom: '100%' }
   			}
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
-  			'accordion-up': 'accordion-up 0.2s ease-out'
+  			'accordion-up': 'accordion-up 0.2s ease-out',
+  			'light-pass-right': 'lightPassRight 1.5s ease-in-out infinite',
+  			'light-pass-left': 'lightPassLeft 1.5s ease-in-out infinite',
+  			'light-pass-down': 'lightPassDown 1.5s ease-in-out infinite',
+  			'light-pass-up': 'lightPassUp 1.5s ease-in-out infinite'
   		}
   	}
   },
